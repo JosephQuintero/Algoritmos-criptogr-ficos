@@ -1,3 +1,33 @@
+<?php
+
+    include 'db.php';
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $role_id = $_POST['role'];
+
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+        $query = $mysqli->prepare("INSERT INTO usuarios (username, password, rol_id) VALUES (?, ?, ?)");
+        $query->bind_param("ssi", $username, $hashed_password, $role_id);
+
+        if ($query->execute()) {
+
+            header("Location: index.php");
+
+        } else {
+
+            echo "Error: " . $query->error;
+
+        }
+
+        $query->close();
+
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,17 +55,17 @@
 
 <div class="form-container">
     <h2>Registro de Usuario</h2>
-    <form action="procesar_registro.php" method="POST">
+    <form action="" method="POST">
         <input type="text" name="username" placeholder="Nombre de usuario" required>
         <input type="password" id="password" name="password" placeholder="Contraseña" required>
         <button type="button" id="togglePassword" onclick="togglePassword()">Mostrar contraseña</button>
         <select name="role" required>
             <option value="" disabled selected>Selecciona un rol</option>
-            <option value="Admin">Administrador</option>
-            <option value="Editor">Editor</option>
-            <option value="Viewer">Visualizador</option>
-            <option value="Support">Soporte</option>
-            <option value="SuperAdmin">Super Administrador</option>
+            <option value="1">Administrador</option>
+            <option value="2">Editor</option>
+            <option value="3">Visualizador</option>
+            <option value="4">Soporte</option>
+            <option value="5">Super Administrador</option>
         </select>
         <input type="submit" value="Registrarse">
     </form>
@@ -43,4 +73,3 @@
 
 </body>
 </html>
-
