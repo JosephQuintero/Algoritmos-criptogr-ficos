@@ -15,15 +15,19 @@
         $query->bind_result($user_id, $hashed_password, $rol_id);
         $query->fetch();
 
-        if (password_verify($password, $hashed_password)) {
+        if ($hashed_password != null) {
 
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['rol_id'] = $rol_id;
-            header('Location: dashboard.php');
+            if (password_verify($password, $hashed_password)) {
 
-        } else {
-
-            echo "Credenciales incorrectas.";
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['rol_id'] = $rol_id;
+                header('Location: dashboard.php');
+    
+            } else {
+    
+                echo "Credenciales incorrectas.";
+    
+            }
 
         }
     
@@ -72,4 +76,3 @@
 
 </body>
 </html>
-
