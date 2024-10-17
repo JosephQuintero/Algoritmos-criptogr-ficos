@@ -6,27 +6,81 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        function sanitize_username($username) {
+            
+            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+            
+            if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $username)) {
 
-        $query = $mysqli->prepare("SELECT id, password, rol_id FROM usuarios WHERE username = ?");
-        $query->bind_param("s", $username);
-        $query->execute();
-        $query->bind_result($user_id, $hashed_password, $rol_id);
-        $query->fetch();
+                return false;
 
-        if ($hashed_password != null) {
+            }
 
-            if (password_verify($password, $hashed_password)) {
+            return $username;
 
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['rol_id'] = $rol_id;
-                header('Location: dashboard.php');
+        }
+
+        function validate_password($password) {
+
+            if (strlen($password) < 8) {
+                
+                return false;
+
+            }
+        
+            if (!preg_match('/[0-9]/', $password)) {
+
+                return false;
+
+            }
+        
+            if (!preg_match('/[\W_]/', $password)) {
+
+                return false;
+
+            }
+        
+            if (!preg_match('/^[a-zA-Z0-9_\-@.]+$/', $password)) {
+
+                return false;
+
+            }
+
+            return $password;
+
+        }
+
+        $username = sanitize_username($_POST['username']);
+        $password = validate_password($_POST['password']);
+
+        if ($username && $password) {
+
+            $query = $mysqli->prepare("SELECT id, password, rol_id FROM usuarios WHERE username = ?");
+            $query->bind_param("s", $username);
+            $query->execute();
+            $query->bind_result($user_id, $hashed_password, $rol_id);
+            $query->fetch();
     
+            
+            if ($hashed_password != null) {
+
+                if (password_verify($password, $hashed_password)) {
+                    
+                    $_SESSION['user_id'] = $user_id;
+                    $_SESSION['rol_id'] = $rol_id;
+                    header('Location: dashboard.php');
+                    exit();
+
+                } else {
+
+                    echo "Credenciales incorrectas.";
+
+                }
+
             } else {
-    
-                echo "Credenciales incorrectas.";
-    
+
+                echo "Usuario no encontrado.";
+
             }
 
         }
