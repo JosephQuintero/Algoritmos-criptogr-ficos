@@ -1,0 +1,147 @@
+/* Estilos generales del body y la página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e67e22, #f39c12); /* Cambié los colores para diferenciarlos */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado del panel */
+header {
+    background-color: linear-gradient(135deg, #f39c12, #e67e22);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #2c3e50;
+}
+
+/* Estilo para el contenido principal */
+.dashboard-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+/* Caja de bienvenida */
+.welcome-message {
+    background-color: #3498db; /* Diferente color para el editor */
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+    transition: box-shadow 0.3s ease;
+}
+
+.welcome-message:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-message h2 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+    color: white;
+    line-height: 1.5;
+}
+
+/* Estilos para enlaces */
+a {
+    color: #1c84e4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f39c12;
+}
+
+/* Botón de cerrar sesión */
+a.logout {
+    display: inline-block;
+    background-color: #e74c3c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+a.logout:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos de responsividad */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+    }
+
+    .welcome-message h2 {
+        font-size: 24px;
+    }
+
+    .welcome-message p {
+        font-size: 16px;
+    }
+}
