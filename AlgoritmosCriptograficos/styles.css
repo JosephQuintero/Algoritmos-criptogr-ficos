@@ -1,3 +1,4 @@
+/* Estilos generales del body y la página */
 body {
     margin: 0;
     padding: 0;
@@ -9,63 +10,139 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.form-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 350px; /* Ajusta el ancho aquí */
-    position: relative;
+/* Encabezado del panel */
+header {
+    background-color: linear-gradient(135deg, #4f98c9, #5fd3c6);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    margin-bottom: 20px;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.navbar h1 {
     font-size: 24px;
-    color: #333;
-}
-
-.form-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-container input[type="submit"] {
-    background-color: #9b59b6;
     color: white;
-    border: none;
-    cursor: pointer;
+    margin: 0;
 }
 
-.form-container input[type="submit"]:hover {
-    background-color: #7a3e99;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-button#togglePassword {
-    margin-top: -10px;
-    margin-bottom: 10px;
-    background-color: transparent;
-    border: none;
-    color: #9b59b6;
-    cursor: pointer;
+.navbar ul li {
+    display: inline;
 }
 
-button#togglePassword:hover {
-    text-decoration: underline;
-}
-
-a.register-link {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: #9b59b6;
+.navbar ul li a {
+    color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-a.register-link:hover {
-    text-decoration: underline;
+.navbar ul li a:hover {
+    color: #f39c12;
 }
+
+/* Estilo para el contenido principal */
+.dashboard-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+/* Caja de bienvenida */
+.welcome-message {
+    background-color: #f39c12;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+    transition: box-shadow 0.3s ease;
+}
+
+.welcome-message:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-message h2 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+    color: white;
+    line-height: 1.5;
+}
+
+/* Estilos para enlaces */
+a {
+    color: #1c84e4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f39c12;
+}
+
+/* Botón de cerrar sesión */
+a.logout {
+    display: inline-block;
+    background-color: #e74c3c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+a.logout:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos de responsividad */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+    }
+
+    .welcome-message h2 {
+        font-size: 24px;
+    }
+
+    .welcome-message p {
+        font-size: 16px;
+    }
+}
+
