@@ -68,7 +68,41 @@
                     
                     $_SESSION['user_id'] = $user_id;
                     $_SESSION['rol_id'] = $rol_id;
-                    header('Location: dashboard.php');
+                    
+                    switch ($rol_id) {
+
+                        case 1:
+
+                            header('Location: admin_dashboard.php');
+                            break;
+
+                        case 2:
+
+                            header('Location: editor_dashboard.php');
+                            break;
+
+                        case 3:
+
+                            header('Location: viewer_dashboard.php');
+                            break;
+
+                        case 4:
+
+                            header('Location: support_dashboard.php');
+                            break;
+
+                        case 5:
+
+                            header('Location: super_admin_dashboard.php');
+                            break;
+
+                        default:
+
+                            header('Location: index.php');
+                            break;
+
+                    }
+
                     exit();
 
                 } else {
@@ -76,10 +110,6 @@
                     echo "Credenciales incorrectas.";
 
                 }
-
-            } else {
-
-                echo "Usuario no encontrado.";
 
             }
 

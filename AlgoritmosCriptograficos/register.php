@@ -21,7 +21,7 @@
         function validate_password($password) {
 
             if (strlen($password) < 8) {
-                
+
                 return false;
 
             }
@@ -102,6 +102,7 @@
     <form action="" method="POST">
         <input type="text" name="username" placeholder="Nombre de usuario" required>
         <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        <p>La contraseña debe tener al menos 8 caracteres, incluyendo al menos un número y un carácter especial.</p>
         <button type="button" id="togglePassword" onclick="togglePassword()">Mostrar contraseña</button>
         <select name="role" required>
             <option value="" disabled selected>Selecciona un rol</option>
