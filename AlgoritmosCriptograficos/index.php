@@ -21,24 +21,6 @@
         }
 
         function validate_password($password) {
-
-            if (strlen($password) < 8) {
-                
-                return false;
-
-            }
-        
-            if (!preg_match('/[0-9]/', $password)) {
-
-                return false;
-
-            }
-        
-            if (!preg_match('/[\W_]/', $password)) {
-
-                return false;
-
-            }
         
             if (!preg_match('/^[a-zA-Z0-9_\-@.]+$/', $password)) {
 
@@ -113,9 +95,9 @@
 
             }
 
+            $query->close();
+
         }
-    
-        $query->close();
 
     }
 
